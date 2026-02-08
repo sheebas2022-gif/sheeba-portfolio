@@ -36,3 +36,15 @@ window.addEventListener('scroll', () => {
         navLink.classList.add('bg-white', 'shadow-sm', 'bg-opacity-50', 'dark:border', 'dark:border-white/30', "dark:bg-transparent");
     }
 })
+
+// Contact form: open email to sheebasampath37@gmail.com with subject and body pre-filled
+document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = encodeURIComponent(form.name.value.trim());
+    const email = encodeURIComponent(form.email.value.trim());
+    const message = encodeURIComponent(form.message.value.trim());
+    const subject = encodeURIComponent(form.subject.value || 'Sheeba S - Portfolio Contact');
+    const body = encodeURIComponent(`Name: ${form.name.value.trim()}\nEmail: ${form.email.value.trim()}\n\nMessage:\n${form.message.value.trim()}`);
+    window.location.href = `mailto:sheebasampath37@gmail.com?subject=${subject}&body=${body}`;
+})
